@@ -14,17 +14,30 @@
         <a routerLink="/contact" class="hover:underline">Contact</a>
     </div>
     <div>
-        <button
+        <!-- <a
             (click)="onLogInClick()"
+            routerLink="login"
             class="mx-8 text-lg hover:text-indigo-700"
         >
             Log in
-        </button>
-        <button
+        </a>
+        <a
             (click)="onSignInClick()"
+            routerLink="signin"
             class="px-8 py-2 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg"
         >
             Sign in
-        </button>
+        </a> -->
+        <a routerLink="login" class="mx-8 text-lg hover:text-indigo-700">
+            Log in
+        </a>
+        <a
+            routerLink="signin"
+            class="px-8 py-2 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg"
+        >
+            Sign in
+        </a>
     </div>
 </div>
+
+<!-- if path === login || signin dont display header -->

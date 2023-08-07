@@ -9,13 +9,13 @@ import { VisibilityService } from '../services/visibility.service';
 export class HeaderComponent {
     constructor(private visibilityService: VisibilityService) {}
 
-    onLogInClick() {
-        this.visibilityService.toggleHeaderVisibility();
-        this.visibilityService.navigateTo('/login'); // Replace with the actual login path
-    }
+    // onLogInClick() {
+    //     this.visibilityService.toggleHeaderVisibility();
+    //     this.visibilityService.navigateTo('/login'); // Replace with the actual login path
+    // }
 
-    onSignInClick() {
-        this.visibilityService.toggleHeaderVisibility();
-        this.visibilityService.navigateTo('/signin'); // Replace with the actual sign-in path
-    }
+    // onSignInClick() {
+    //     this.visibilityService.toggleHeaderVisibility();
+    //     this.visibilityService.navigateTo('/signin'); // Replace with the actual sign-in path
+    // }
 }

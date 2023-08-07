@@ -7,19 +7,15 @@ import { Observable } from 'rxjs/internal/Observable';
     providedIn: 'root',
 })
 export class VisibilityService {
-    private isHeaderVisible = new BehaviorSubject<boolean>(true);
-
-    constructor(private router: Router) {}
-
-    toggleHeaderVisibility() {
-        this.isHeaderVisible.next(!this.isHeaderVisible.value);
-    }
-
-    navigateTo(path: string) {
-        this.router.navigate([path]);
-    }
-
-    getHeaderVisibility(): Observable<boolean> {
-        return this.isHeaderVisible.asObservable();
-    }
+    // private isHeaderVisible = new BehaviorSubject<boolean>(true);
+    // constructor(private router: Router) {}
+    // toggleHeaderVisibility() {
+    //     this.isHeaderVisible.next(!this.isHeaderVisible.value);
+    // }
+    // navigateTo(path: string) {
+    //     this.router.navigate([path]);
+    // }
+    // getHeaderVisibility(): Observable<boolean> {
+    //     return this.isHeaderVisible.asObservable();
+    // }
 }

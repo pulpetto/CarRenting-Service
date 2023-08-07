@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { VisibilityService } from './services/visibility.service';
 
 @Component({
@@ -9,11 +10,28 @@ import { VisibilityService } from './services/visibility.service';
 export class AppComponent {
     isHeaderVisible = true;
 
-    constructor(private visibilityService: VisibilityService) {
-        this.visibilityService
-            .getHeaderVisibility()
-            .subscribe((visible: boolean) => {
-                this.isHeaderVisible = visible;
-            });
+    constructor(
+        private visibilityService: VisibilityService,
+        private router: Router
+    ) {
+        // this.visibilityService
+        //     .getHeaderVisibility()
+        //     .subscribe((visible: boolean) => {
+        //         this.isHeaderVisible = visible;
+        //     });
+        router.events.subscribe((val) => {
+            // see also
+            console.log(val instanceof NavigationEnd);
+        });
+
+        if (router.url === 'login' || router.url === 'signin') {
+            // this.visibilityService.toggleHeaderVisibility(false);
+            this.isHeaderVisible = false;
+            console.log('f');
+        } else {
+            // this.visibilityService.toggleHeaderVisibility(true);
+            this.isHeaderVisible = true;
+            console.log('t');
+        }
     }
 }
