@@ -7,13 +7,11 @@ import { VisibilityService } from '../services/visibility.service';
     styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-    constructor(private visibilityService: VisibilityService) {}
-
+    // constructor(private visibilityService: VisibilityService) {}
     // onLogInClick() {
     //     this.visibilityService.toggleHeaderVisibility();
     //     this.visibilityService.navigateTo('/login'); // Replace with the actual login path
     // }
-
     // onSignInClick() {
     //     this.visibilityService.toggleHeaderVisibility();
     //     this.visibilityService.navigateTo('/signin'); // Replace with the actual sign-in path
