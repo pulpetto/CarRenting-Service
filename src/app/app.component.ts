@@ -20,7 +20,6 @@ export class AppComponent {
         //         this.isHeaderVisible = visible;
         //     });
         router.events.subscribe((val) => {
-            // see also
             console.log(val instanceof NavigationEnd);
         });
 
