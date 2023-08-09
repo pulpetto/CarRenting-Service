@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { VisibilityService } from './services/visibility.service';
+import { filter } from 'rxjs/internal/operators/filter';
 
 @Component({
     selector: 'app-root',
@@ -8,29 +9,33 @@ import { VisibilityService } from './services/visibility.service';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    isHeaderVisible = true;
+    isHeaderVisible: boolean = true;
 
     constructor(
         private visibilityService: VisibilityService,
-        private router: Router
+        private router: Router,
+        private activatedRoute: ActivatedRoute
     ) {
-        // this.visibilityService
-        //     .getHeaderVisibility()
-        //     .subscribe((visible: boolean) => {
-        //         this.isHeaderVisible = visible;
-        //     });
-        router.events.subscribe((val) => {
-            console.log(val instanceof NavigationEnd);
+        this.visibilityService.getHeaderVisibility().subscribe((isVisible) => {
+            this.isHeaderVisible = isVisible;
+            console.log('Header is now visible', this.isHeaderVisible);
+            console.log('Header is now visible', isVisible);
         });
 
-        if (router.url === 'login' || router.url === 'signin') {
-            // this.visibilityService.toggleHeaderVisibility(false);
-            this.isHeaderVisible = false;
-            console.log('f');
-        } else {
-            // this.visibilityService.toggleHeaderVisibility(true);
-            this.isHeaderVisible = true;
-            console.log('t');
-        }
+        // Subscribe to NavigationEnd events to detect route changes
+        this.router.events
+            .pipe(filter((event) => event instanceof NavigationEnd))
+            .subscribe(() => {
+                const routePath =
+                    this.activatedRoute.snapshot.firstChild?.routeConfig?.path;
+
+                if (routePath === 'login' || routePath === 'signin') {
+                    this.visibilityService.setHeaderVisibility(false);
+                    console.log('sttng to fls');
+                } else {
+                    this.visibilityService.setHeaderVisibility(true);
+                    console.log('sttng to tr');
+                }
+            });
     }
 }
