@@ -1,4 +1,4 @@
 <main class="bg-neutral-900 h-full text-white">
-    <app-header *ngIf="isHeaderVisible"></app-header>
+    <app-header *ngIf="isHeaderVisible$ | async"></app-header>
     <router-outlet></router-outlet>
 </main>
