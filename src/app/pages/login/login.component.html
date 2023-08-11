@@ -1,5 +1,14 @@
 <div class="h-screen flex flex-col justify-center items-center text-2xl">
     <div>Welcome Back!</div>
+    <form [formGroup]="loginForm" class="text-black">
+        <input type="text" formControlName="name" />
+        <div
+            *ngIf="loginForm.controls.name.errors?.['required']"
+            class="text-red-600"
+        >
+            This field is required
+        </div>
+    </form>
     <div>
         Don't have an account yet?
         <a routerLink="/signin" class="hover:underline text-indigo-700">
