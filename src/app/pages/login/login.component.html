@@ -1,18 +1,33 @@
-<div class="h-screen flex flex-col justify-center items-center text-2xl">
-    <div>Welcome Back!</div>
-    <form [formGroup]="loginForm" class="text-black">
-        <input type="text" formControlName="name" />
-        <div
-            *ngIf="loginForm.controls.name.errors?.['required']"
-            class="text-red-600"
-        >
-            This field is required
+<div class="h-screen flex justify-center items-center">
+    <div
+        class="flex flex-col justify-center items-center gap-6 bg-neutral-950 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 shadow-md p-4"
+    >
+        <div class="text-2xl">Welcome Back!</div>
+
+        <form [formGroup]="loginForm" class="text-black">
+            <input type="text" formControlName="name" class="p-2" />
+            <div
+                *ngIf="loginForm.controls.name.errors?.['required']"
+                class="text-red-600"
+            >
+                This field is required
+            </div>
+        </form>
+
+        <div class="w-full">
+            <button
+                class="w-full py-2 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg mb-2"
+            >
+                Log in
+            </button>
+            <div class="text-xs text-center">
+                <span class="text-neutral-300">
+                    Don't have an account yet?</span
+                >
+                <a routerLink="/signin" class="hover:underline text-indigo-700">
+                    Join Now!
+                </a>
+            </div>
         </div>
-    </form>
-    <div>
-        Don't have an account yet?
-        <a routerLink="/signin" class="hover:underline text-indigo-700">
-            Join Now!
-        </a>
     </div>
 </div>
