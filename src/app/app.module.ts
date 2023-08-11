@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InputComponent } from './shared/input/input.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         HomeComponent,
         LoginComponent,
         SigninComponent,
+        InputComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
     providers: [],
