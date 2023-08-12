@@ -1,1 +1,6 @@
-<p>input works!</p>
+<input type="text" [formControl]="control" class="p-2" />
+<ng-container *ngIf="control.touched && control.dirty && control.errors">
+    <div *ngIf="control.errors?.['required']" class="text-red-600">
+        This field is required
+    </div>
+</ng-container>

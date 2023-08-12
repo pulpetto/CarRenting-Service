@@ -5,13 +5,8 @@
         <div class="text-2xl">Welcome Back!</div>
 
         <form [formGroup]="loginForm" class="text-black">
-            <input type="text" formControlName="name" class="p-2" />
-            <div
-                *ngIf="loginForm.controls.name.errors?.['required']"
-                class="text-red-600"
-            >
-                This field is required
-            </div>
+            <!-- <app-input [control]="loginForm.get('name')"></app-input> -->
+            <app-input [control]="loginForm.controls.name"></app-input>
         </form>
 
         <div class="w-full">
@@ -22,8 +17,8 @@
             </button>
             <div class="text-xs text-center">
                 <span class="text-neutral-300">
-                    Don't have an account yet?</span
-                >
+                    Don't have an account yet?
+                </span>
                 <a routerLink="/signin" class="hover:underline text-indigo-700">
                     Join Now!
                 </a>
