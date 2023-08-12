@@ -3,12 +3,15 @@
     <input
         type="text"
         [formControl]="control"
-        class="p-3 rounded-md bg-neutral-900 focus:outline focus:outline-indigo-700"
+        class="px-3 py-4 rounded-md bg-neutral-900 focus:outline focus:outline-indigo-700"
     />
-</div>
-
-<ng-container *ngIf="control.touched && control.dirty && control.errors">
-    <div *ngIf="control.errors?.['required']" class="text-red-600">
-        This field is required
+    <div class="h-4">
+        <ng-container
+            *ngIf="control.touched && control.dirty && control.errors"
+        >
+            <div *ngIf="control.errors?.['required']" class="text-red-600">
+                This field is required
+            </div>
+        </ng-container>
     </div>
-</ng-container>
+</div>
