@@ -8,4 +8,5 @@ import { FormControl } from '@angular/forms';
 })
 export class InputComponent {
     @Input() control!: FormControl;
+    @Input() label!: string;
 }

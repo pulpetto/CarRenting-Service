@@ -11,10 +11,7 @@ export class LoginComponent {
         name: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required, Validators.email]),
-        age: new FormControl('', [
-            Validators.required,
-            Validators.pattern('^[0-9]*$'),
-        ]),
+        age: new FormControl('', [Validators.pattern('^[0-9]*$')]),
         password: new FormControl('', [Validators.required]),
         repeatPassword: new FormControl('', [Validators.required]),
     });

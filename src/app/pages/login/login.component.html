@@ -1,15 +1,51 @@
 <div class="h-screen flex justify-center items-center">
     <div
-        class="flex flex-col justify-center items-center gap-6 bg-neutral-950 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 shadow-md p-4"
+        class="flex flex-col justify-center items-center gap-6 bg-neutral-950 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 shadow-md p-8"
     >
-        <div class="text-2xl">Welcome Back!</div>
+        <div class="text-6xl font-semibold">Welcome Back!</div>
 
-        <form [formGroup]="loginForm" class="text-black">
+        <form
+            [formGroup]="loginForm"
+            class="flex flex-col justify-center items-center gap-6"
+        >
             <!-- <app-input [control]="loginForm.get('name')"></app-input> -->
-            <app-input [control]="loginForm.controls.name"></app-input>
+            <div class="flex gap-8">
+                <app-input
+                    label="name"
+                    [control]="loginForm.controls.name"
+                ></app-input>
+                <app-input
+                    label="last name"
+                    [control]="loginForm.controls.lastName"
+                ></app-input>
+            </div>
+
+            <div class="flex gap-8 w-full">
+                <app-input
+                    class="w-full"
+                    label="email"
+                    [control]="loginForm.controls.age"
+                ></app-input>
+                <app-input
+                    class="w-12"
+                    label="age"
+                    [control]="loginForm.controls.email"
+                ></app-input>
+            </div>
+
+            <app-input
+                class="w-full"
+                label="password"
+                [control]="loginForm.controls.password"
+            ></app-input>
+            <app-input
+                class="w-full"
+                label="repeat password"
+                [control]="loginForm.controls.repeatPassword"
+            ></app-input>
         </form>
 
-        <div class="w-full">
+        <div class="w-full mt-8">
             <button
                 class="w-full py-2 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg mb-2"
             >

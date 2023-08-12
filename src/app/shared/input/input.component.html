@@ -1,4 +1,12 @@
-<input type="text" [formControl]="control" class="p-2" />
+<div class="flex flex-col gap-2">
+    <label class="text-white">{{ label }}:</label>
+    <input
+        type="text"
+        [formControl]="control"
+        class="p-3 text-black rounded-md"
+    />
+</div>
+
 <ng-container *ngIf="control.touched && control.dirty && control.errors">
     <div *ngIf="control.errors?.['required']" class="text-red-600">
         This field is required
