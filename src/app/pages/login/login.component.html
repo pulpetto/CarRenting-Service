@@ -12,10 +12,12 @@
             <div class="flex gap-8">
                 <app-input
                     label="name"
+                    type="text"
                     [control]="loginForm.controls.name"
                 ></app-input>
                 <app-input
                     label="last name"
+                    type="text"
                     [control]="loginForm.controls.lastName"
                 ></app-input>
             </div>
@@ -24,11 +26,13 @@
                 <app-input
                     class="w-full"
                     label="email"
+                    type="email"
                     [control]="loginForm.controls.email"
                 ></app-input>
                 <app-input
                     class="w-12"
                     label="age"
+                    type="number"
                     [control]="loginForm.controls.age"
                 ></app-input>
             </div>
@@ -36,18 +40,14 @@
             <app-input
                 class="w-full"
                 label="password"
+                type="text"
                 [control]="loginForm.controls.password"
-            ></app-input>
-            <app-input
-                class="w-full"
-                label="repeat password"
-                [control]="loginForm.controls.repeatPassword"
             ></app-input>
         </form>
 
-        <div class="w-full mt-8">
+        <div class="w-full mt-4">
             <button
-                class="w-full py-2 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg mb-2"
+                class="w-full py-3 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg mb-2"
             >
                 Log in
             </button>
