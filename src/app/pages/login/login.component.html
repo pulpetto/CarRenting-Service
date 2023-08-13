@@ -6,41 +6,27 @@
 
         <form
             [formGroup]="loginForm"
-            class="flex flex-col justify-center items-center gap-6"
+            class="flex flex-col justify-center items-center gap-6 w-full"
         >
             <!-- <app-input [control]="loginForm.get('name')"></app-input> -->
-            <div class="flex gap-8">
-                <app-input
-                    label="name"
-                    type="text"
-                    [control]="loginForm.controls.name"
-                ></app-input>
-                <app-input
-                    label="last name"
-                    type="text"
-                    [control]="loginForm.controls.lastName"
-                ></app-input>
-            </div>
+            <app-input
+                class="w-full"
+                label="username"
+                type="text"
+                [control]="loginForm.controls.username"
+            ></app-input>
 
-            <div class="flex gap-8 w-full">
-                <app-input
-                    class="w-full"
-                    label="email"
-                    type="email"
-                    [control]="loginForm.controls.email"
-                ></app-input>
-                <app-input
-                    class="w-12"
-                    label="age"
-                    type="number"
-                    [control]="loginForm.controls.age"
-                ></app-input>
-            </div>
+            <app-input
+                class="w-full"
+                label="email"
+                type="email"
+                [control]="loginForm.controls.email"
+            ></app-input>
 
             <app-input
                 class="w-full"
                 label="password"
-                type="text"
+                type="password"
                 [control]="loginForm.controls.password"
             ></app-input>
         </form>
@@ -49,7 +35,7 @@
             <button
                 class="w-full py-3 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg mb-2"
             >
-                Log in
+                Log In
             </button>
             <div class="text-xs text-center">
                 <span class="text-neutral-300">
