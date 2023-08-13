@@ -15,31 +15,6 @@
             <div *ngIf="control.errors?.['email']" class="text-red-600">
                 this field requires an email address
             </div>
-            <div
-                *ngIf="control.errors?.['pattern']"
-                class="text-red-600 text-xs"
-            >
-                only numbers are allowed
-            </div>
-            <div *ngIf="control.errors?.['minlength']" class="text-red-600">
-                must be longer than 8 characters
-            </div>
-
-            <div
-                *ngIf="control.errors?.['uppercaseLetterMissing']"
-                class="text-red-600"
-            >
-                password should contain at least 1 uppercase letter
-            </div>
-            <div
-                *ngIf="control.errors?.['lowercaseLetterMissing']"
-                class="text-red-600"
-            >
-                password should contain at least 1 lowercase letter
-            </div>
-            <div *ngIf="control.errors?.['symbolMissing']" class="text-red-600">
-                password should contain at least 1 symbol
-            </div>
         </ng-container>
     </div>
 </div>
