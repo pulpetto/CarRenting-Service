@@ -28,6 +28,10 @@ export class SigninComponent {
             return { lowercaseLetterMissing: true };
         }
 
+        if (!/[0-9]/.test(value)) {
+            return { numberMissing: true };
+        }
+
         // Check for symbols (non-alphanumeric characters)
         if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\\-]/.test(value)) {
             return {
@@ -35,7 +39,10 @@ export class SigninComponent {
             };
         }
 
-        // dołuż sprawdzanie na cyferki i długość hasła
+        if (value.length < 8) {
+            return { passwordTooShort: true };
+        }
+
         return null;
     };
 
@@ -46,7 +53,6 @@ export class SigninComponent {
         age: new FormControl('', [Validators.pattern('^[0-9]*$')]),
         password: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
             this.passwordValidator.bind(this),
         ]),
         repeatPassword: new FormControl('', [Validators.required]),
