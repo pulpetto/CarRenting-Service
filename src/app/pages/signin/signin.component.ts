@@ -20,8 +20,6 @@ export class SigninComponent {
 
         // Check for at least one uppercase letter
         if (!/[A-Z]/.test(value)) {
-            console.log('spk');
-            console.log(value);
             return { uppercaseLetterMissing: true };
         }
 
@@ -37,7 +35,7 @@ export class SigninComponent {
             };
         }
 
-        // dołuż sprawdzanie na cyferki i długość kótasa
+        // dołuż sprawdzanie na cyferki i długość hasła
         return null;
     };
 
