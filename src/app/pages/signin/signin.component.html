@@ -1,1 +1,68 @@
-<p>signin works!</p>
+<div class="h-screen flex justify-center items-center">
+    <div
+        class="flex flex-col justify-center items-center gap-6 bg-neutral-950 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 shadow-md p-12"
+    >
+        <div class="text-6xl font-semibold">Create Account</div>
+
+        <form
+            [formGroup]="loginForm"
+            class="flex flex-col justify-center items-center gap-6"
+        >
+            <!-- <app-input [control]="loginForm.get('name')"></app-input> -->
+            <div class="flex gap-8">
+                <app-input
+                    label="name"
+                    type="text"
+                    [control]="loginForm.controls.name"
+                ></app-input>
+                <app-input
+                    label="last name"
+                    type="text"
+                    [control]="loginForm.controls.lastName"
+                ></app-input>
+            </div>
+
+            <div class="flex gap-8 w-full">
+                <app-input
+                    class="w-full"
+                    label="email"
+                    type="email"
+                    [control]="loginForm.controls.email"
+                ></app-input>
+                <app-input
+                    class="w-12"
+                    label="age"
+                    type="number"
+                    [control]="loginForm.controls.age"
+                ></app-input>
+            </div>
+
+            <app-input
+                class="w-full"
+                label="password"
+                type="text"
+                [control]="loginForm.controls.password"
+            ></app-input>
+            <app-input
+                class="w-full"
+                label="repeat password"
+                type="text"
+                [control]="loginForm.controls.repeatPassword"
+            ></app-input>
+        </form>
+
+        <div class="w-full mt-4">
+            <button
+                class="w-full py-3 bg-indigo-700 hover:bg-indigo-800 rounded-md text-lg mb-2"
+            >
+                Sign In
+            </button>
+            <div class="text-xs text-center">
+                <span class="text-neutral-300"> Already a member? </span>
+                <a routerLink="/login" class="hover:underline text-indigo-700">
+                    Log in!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
