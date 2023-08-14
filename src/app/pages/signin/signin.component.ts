@@ -46,7 +46,7 @@ export class SigninComponent {
         return null;
     };
 
-    loginForm = new FormGroup({
+    signinForm = new FormGroup({
         name: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required, Validators.email]),
@@ -57,4 +57,8 @@ export class SigninComponent {
         ]),
         repeatPassword: new FormControl('', [Validators.required]),
     });
+
+    onSignIn() {
+        console.log('signed in');
+    }
 }
