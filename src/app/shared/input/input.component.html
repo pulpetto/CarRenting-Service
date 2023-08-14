@@ -60,6 +60,13 @@
                 >
                     password should contain at least 8 characters
                 </div>
+
+                <div
+                    *ngIf="control.errors?.['passwordsDoNotMatch']"
+                    class="text-red-600"
+                >
+                    passwords are not the same
+                </div>
             </ng-container>
         </ng-container>
     </div>

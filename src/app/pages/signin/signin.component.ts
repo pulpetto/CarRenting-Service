@@ -55,8 +55,24 @@ export class SigninComponent {
             Validators.required,
             this.passwordValidator.bind(this),
         ]),
-        repeatPassword: new FormControl('', [Validators.required]),
+        repeatPassword: new FormControl('', [
+            Validators.required,
+            this.matchingPasswordValidator.bind(this),
+        ]),
     });
+
+    matchingPasswordValidator(
+        control: AbstractControl
+    ): ValidationErrors | null {
+        const password = this.signinForm?.get('password')?.value;
+        const repeatPassword = control.value;
+
+        if (password !== repeatPassword) {
+            return { passwordsDoNotMatch: true };
+        }
+
+        return null;
+    }
 
     onSignIn() {
         console.log('signed in');
