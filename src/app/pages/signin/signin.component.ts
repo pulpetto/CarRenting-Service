@@ -82,19 +82,26 @@ export class SigninComponent {
     }
 
     onSignIn() {
-        const newUser: User = {
-            user: {
+        if (
+            this.userService
+                .getUsers()
+                .some(
+                    (user) =>
+                        user.email === this.signinForm.get('email')?.value!
+                )
+        ) {
+            return;
+        } else {
+            const newUser: User = {
                 // name: this.signinForm.controls.name.value!,
                 name: this.signinForm?.get('name')?.value!,
                 lastname: this.signinForm.get('lastName')?.value!,
                 email: this.signinForm.get('email')?.value!,
                 age: parseInt(this.signinForm.get('age')?.value!),
                 password: this.signinForm.get('password')?.value!,
-            },
-        };
+            };
 
-        this.userService.addUser(newUser);
-        console.log('signed in');
-        console.log(this.userService.getUsers());
+            this.userService.addUser(newUser);
+        }
     }
 }
