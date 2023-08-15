@@ -16,7 +16,11 @@ import { Router } from '@angular/router';
     styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent {
-    constructor(private userService: UserService, private router: Router) {}
+    loginPromptVisibility!: boolean;
+
+    constructor(private userService: UserService, private router: Router) {
+        this.loginPromptVisibility = false;
+    }
 
     passwordValidator = function (
         control: AbstractControl
@@ -91,6 +95,7 @@ export class SigninComponent {
                         user.email === this.signinForm.get('email')?.value!
                 )
         ) {
+            this.loginPromptVisibility = true;
             return;
         } else {
             const newUser: User = {
