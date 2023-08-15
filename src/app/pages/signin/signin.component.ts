@@ -6,6 +6,8 @@ import {
     AbstractControl,
     ValidationErrors,
 } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
     selector: 'app-signin',
@@ -13,6 +15,8 @@ import {
     styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent {
+    constructor(private userService: UserService) {}
+
     passwordValidator = function (
         control: AbstractControl
     ): ValidationErrors | null {
@@ -50,7 +54,10 @@ export class SigninComponent {
         name: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required, Validators.email]),
-        age: new FormControl('', [Validators.pattern('^[0-9]*$')]),
+        age: new FormControl('', [
+            Validators.required,
+            Validators.pattern('^[0-9]*$'),
+        ]),
         password: new FormControl('', [
             Validators.required,
             this.passwordValidator.bind(this),
@@ -75,6 +82,19 @@ export class SigninComponent {
     }
 
     onSignIn() {
+        const newUser: User = {
+            user: {
+                // name: this.signinForm.controls.name.value!,
+                name: this.signinForm?.get('name')?.value!,
+                lastname: this.signinForm.get('lastName')?.value!,
+                email: this.signinForm.get('email')?.value!,
+                age: parseInt(this.signinForm.get('age')?.value!),
+                password: this.signinForm.get('password')?.value!,
+            },
+        };
+
+        this.userService.addUser(newUser);
         console.log('signed in');
+        console.log(this.userService.getUsers());
     }
 }
