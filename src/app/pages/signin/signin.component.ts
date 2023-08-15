@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-signin',
@@ -15,7 +16,7 @@ import { User } from 'src/app/interfaces/user';
     styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent {
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private router: Router) {}
 
     passwordValidator = function (
         control: AbstractControl
@@ -102,6 +103,7 @@ export class SigninComponent {
             };
 
             this.userService.addUser(newUser);
+            this.router.navigate(['/home']);
         }
     }
 }
