@@ -95,6 +95,9 @@ export class SigninComponent {
         } else {
             const newUser: User = {
                 // name: this.signinForm.controls.name.value!,
+                username:
+                    this.signinForm?.get('name')?.value! +
+                    this.signinForm?.get('name')?.value!,
                 name: this.signinForm?.get('name')?.value!,
                 lastname: this.signinForm.get('lastName')?.value!,
                 email: this.signinForm.get('email')?.value!,
