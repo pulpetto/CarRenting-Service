@@ -102,7 +102,7 @@ export class SigninComponent {
                 // name: this.signinForm.controls.name.value!,
                 username:
                     this.signinForm?.get('name')?.value! +
-                    this.signinForm?.get('name')?.value!,
+                    this.signinForm?.get('lastName')?.value!,
                 name: this.signinForm?.get('name')?.value!,
                 lastname: this.signinForm.get('lastName')?.value!,
                 email: this.signinForm.get('email')?.value!,
