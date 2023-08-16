@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './shared/input/input.component';
+import { AccountComponent } from './pages/account/account.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { InputComponent } from './shared/input/input.component';
         LoginComponent,
         SigninComponent,
         InputComponent,
+        AccountComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
     providers: [],
