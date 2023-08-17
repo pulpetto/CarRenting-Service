@@ -108,6 +108,7 @@ export class SigninComponent {
                 email: this.signinForm.get('email')?.value!,
                 age: parseInt(this.signinForm.get('age')?.value!),
                 password: this.signinForm.get('password')?.value!,
+                userOffers: [],
             };
 
             this.userService.addUser(newUser);

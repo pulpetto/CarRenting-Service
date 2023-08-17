@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "car-renting-service-93c73": {
+      "hosting": {
+        "CarRenting": [
+          "car-renting-service-93c73"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "car-renting-service-93c73"
+  }
+}

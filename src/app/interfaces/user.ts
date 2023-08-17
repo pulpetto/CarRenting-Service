@@ -1,3 +1,5 @@
+import { Offer } from './offer';
+
 export interface User {
     username: string;
     name: string;
@@ -5,4 +7,5 @@ export interface User {
     email: string;
     age: number;
     password: string;
+    userOffers: Offer[];
 }
