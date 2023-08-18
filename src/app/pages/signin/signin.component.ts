@@ -11,6 +11,7 @@ import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { switchMap, catchError, throwError, from } from 'rxjs';
 
 @Component({
     selector: 'app-signin',
@@ -94,32 +95,71 @@ export class SigninComponent {
     }
 
     onSignIn() {
-        if (
-            this.userService
-                .getUsers()
-                .some(
-                    (user) =>
-                        user.email === this.signinForm.get('email')?.value!
-                )
-        ) {
-            this.loginPromptVisibility = true;
-            return;
-        } else {
-            const newUser: User = {
-                // name: this.signinForm.controls.name.value!,
-                username:
-                    this.signinForm?.get('name')?.value! +
-                    this.signinForm?.get('lastName')?.value!,
-                name: this.signinForm?.get('name')?.value!,
-                lastname: this.signinForm.get('lastName')?.value!,
-                email: this.signinForm.get('email')?.value!,
-                age: parseInt(this.signinForm.get('age')?.value!),
-                password: this.signinForm.get('password')?.value!,
-                userOffers: [],
-            };
+        // if (
+        //     this.userService
+        //         .getUsers()
+        //         .some(
+        //             (user) =>
+        //                 user.email === this.signinForm.get('email')?.value!
+        //         )
+        // ) {
+        //     this.loginPromptVisibility = true;
+        //     return;
+        // } else {
+        //     const newUser: User = {
+        //         // name: this.signinForm.controls.name.value!,
+        //         username:
+        //             this.signinForm?.get('name')?.value! +
+        //             this.signinForm?.get('lastName')?.value!,
+        //         name: this.signinForm?.get('name')?.value!,
+        //         lastname: this.signinForm.get('lastName')?.value!,
+        //         email: this.signinForm.get('email')?.value!,
+        //         age: parseInt(this.signinForm.get('age')?.value!),
+        //         password: this.signinForm.get('password')?.value!,
+        //         userOffers: [],
+        //     };
 
-            this.userService.addUser(newUser);
-            this.router.navigate(['/home']);
-        }
+        //     this.userService.addUser(newUser);
+        //     this.router.navigate(['/home']);
+        // }
+
+        const email = this.signinForm.get('email')?.value!;
+
+        const password = this.signinForm.get('password')?.value!;
+
+        const observable = from(
+            this.fireAuth.createUserWithEmailAndPassword(email, password)
+        );
+
+        observable
+            .pipe(
+                switchMap((userCredential) => {
+                    const newUser = {
+                        username:
+                            this.signinForm?.get('name')?.value! +
+                            this.signinForm?.get('lastName')?.value!,
+                        name: this.signinForm?.get('name')?.value!,
+                        lastname: this.signinForm.get('lastName')?.value!,
+                        email: this.signinForm.get('email')?.value!,
+                        age: parseInt(this.signinForm.get('age')?.value!),
+                        password: this.signinForm.get('password')?.value!,
+                        userOffers: [],
+                    };
+
+                    console.log(newUser);
+                    console.log(userCredential);
+                    console.log(this.fireStore.collection('users'));
+
+                    return this.fireStore.collection('users').add(newUser);
+                }),
+                catchError((error) => {
+                    console.error('Error signing up:', error);
+                    return throwError(error);
+                })
+            )
+            .subscribe(() => {
+                console.log('ev spk');
+                this.router.navigate(['/home']);
+            });
     }
 }
