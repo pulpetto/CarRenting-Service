@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './shared/input/input.component';
 import { AccountComponent } from './pages/account/account.component';
 
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FirestoreModule } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import {
@@ -45,6 +47,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
+        AngularFireAuthModule,
+        FirestoreModule,
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideAnalytics(() => getAnalytics()),
         provideAuth(() => getAuth()),

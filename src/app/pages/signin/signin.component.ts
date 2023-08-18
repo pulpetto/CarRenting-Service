@@ -9,6 +9,8 @@ import {
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
     selector: 'app-signin',
@@ -18,7 +20,12 @@ import { Router } from '@angular/router';
 export class SigninComponent {
     loginPromptVisibility!: boolean;
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(
+        private userService: UserService,
+        private router: Router,
+        private fireAuth: AngularFireAuth,
+        private fireStore: AngularFirestore
+    ) {
         this.loginPromptVisibility = false;
     }
 
